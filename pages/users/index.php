@@ -1,5 +1,6 @@
 <?php 
 require_once __DIR__ . "/../../repositories/user-repository.php"; 
+$users = getUsers();
 $pageTitle = "Manajemen Pengguna";
 $pageSubtitle = "Daftar seluruh pengguna beserta perannya (role)";
 ?>
