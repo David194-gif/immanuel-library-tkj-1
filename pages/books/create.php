@@ -1,4 +1,8 @@
 <?php
+require_once __DIR__ . "/../../repositories/author-repository.php";
+require_once __DIR__ . "/../../repositories/category-repository.php";
+$categories = getCategories();
+$authors = getAuthors();
 $pageTitle = "Tambah Buku";
 $pageSubtitle = "Lengkapi data buku, kategori, dan penulis";
 ?>
@@ -12,11 +16,6 @@ $pageSubtitle = "Lengkapi data buku, kategori, dan penulis";
   <link rel="stylesheet" href="../../styles/books/create.css">
 </head>
 <body>
-  <?php
-  // Data kategori & penulis dummy untuk mengisi dropdown/checkbox di form
-  $categories = ["Fiksi", "Sains", "Sejarah", "Teknologi"];
-  $authors = ["Andrea Hirata", "Tere Liye", "J.K. Rowling", "Pramoedya Ananta Toer", "Sapardi Djoko Damono"];
-  ?>
   <div class="app-shell">
   <?php require_once __DIR__ . "/../../components/admin/sidebar.php"; ?>
 
@@ -49,8 +48,8 @@ $pageSubtitle = "Lengkapi data buku, kategori, dan penulis";
               <div class="form-group">
                 <label for="category_id">Kategori</label>
                 <select id="category_id" name="category_id">
-                  <?php foreach ($categories as $index => $category): ?>
-                    <option value="<?= $index + 1 ?>"><?= $category ?></option>
+                  <?php foreach ($categories as $category): ?>
+                    <option value="<?= $category["id"] ?>"><?= $category["name"] ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -66,10 +65,10 @@ $pageSubtitle = "Lengkapi data buku, kategori, dan penulis";
             <div class="form-group">
               <label>Pilih Penulis (bisa lebih dari satu)</label>
               <div class="checkbox-grid">
-                <?php foreach ($authors as $index => $authorName): ?>
+                <?php foreach ($authors as $authorName): ?>
                   <label class="checkbox-item">
-                    <input type="checkbox" name="author_ids[]" value="<?= $index + 1 ?>">
-                    <?= $authorName ?>
+                    <input type="checkbox" name="author_ids[]" value="<?= $authorName["id"] ?>">
+                    <?= $authorName["name"] ?>
                   </label>
                 <?php endforeach; ?>
               </div>
