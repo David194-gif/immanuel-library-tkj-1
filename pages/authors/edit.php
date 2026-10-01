@@ -1,4 +1,5 @@
 <?php 
+require_once __DIR__ . "/../../repositories/author-repository.php";
 $pageTitle = "Edit Penulis";
 $pageSubtitle = "Perbarui data penulis";
 $author = getAuthor();

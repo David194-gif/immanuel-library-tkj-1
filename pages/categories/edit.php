@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../../repositories/category-repository.php";
 $pageTitle = "Edit Kategori";
 $pageSubtitle = "Perbarui data kategori";
 $category = getCategory();
