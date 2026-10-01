@@ -1,4 +1,5 @@
 <?php 
+require_once __DIR__ . "/../../repositories/category-repository.php"; 
 $pageTitle = "Manajemen Kategori";
 $pageSubtitle = "Kelola kategori untuk mengelompokkan buku";
 ?>
@@ -12,14 +13,23 @@ $pageSubtitle = "Kelola kategori untuk mengelompokkan buku";
   <link rel="stylesheet" href="../../styles/categories/index.css">
 </head>
 <body>
-  <?php
-  $category = ["id" => 1, "name" => "Fiksi", "description" => "Novel dan cerita rekaan", "total_books" => 3];
-  ?>
   <div class="app-shell">
-    <?php require_once __DIR__ . "/../../components/admin/sidebar.php" ?>
+  <?php require_once __DIR__ . "/../../components/admin/sidebar.php" ?>
 
     <main class="app-main">
-      <?php require_once __DIR__ . "/../../components/admin/topbar.php" ?>
+    <header class="app-topbar">
+      <div class="page-title">
+        <h1>Manajemen Kategori</h1>
+        <p>Kelola kategori untuk mengelompokkan buku</p>
+      </div>
+      <div class="topbar-user">
+        <span class="avatar">BS</span>
+        <div>
+          Budi Santoso<br>
+          <span class="badge badge-member" style="margin-top:2px;">Member</span>
+        </div>
+      </div>
+    </header>
 
       <div class="app-content">
         <div class="toolbar">
@@ -44,7 +54,8 @@ $pageSubtitle = "Kelola kategori untuk mengelompokkan buku";
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <?php foreach($categories as $index => $category): ?>
+                <tr>
                 <td>
                   <div class="cell-primary">
                     <span class="cell-thumb"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg></span>
@@ -60,6 +71,11 @@ $pageSubtitle = "Kelola kategori untuk mengelompokkan buku";
                   </div>
                 </td>
               </tr>
+              <?php endforeach ?>
+
+              <?php if(count($categories) < 1): ?>
+                <td style="text-align: center;" colspan="3">Tidak ada data kategori yang ditemukan</td>
+              <?php endif ?>
             </tbody>
           </table>
         </div>
