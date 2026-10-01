@@ -1,5 +1,6 @@
 <?php 
 require_once __DIR__ . "/../../repositories/author-repository.php"; 
+$authors = getAuthors();
 $pageTitle = "Manajemen Penulis";
 $pageSubtitle = "Kelola data penulis yang terdaftar di sistem";
 ?>
