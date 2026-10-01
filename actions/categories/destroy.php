@@ -6,7 +6,7 @@ $id = isset($_GET['id']) ? $_GET['id'] : null;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hapus Buku - Simulasi</title>
+    <title>Hapus Kategori - Simulasi</title>
     <link rel="stylesheet" href="../../styles/books/index.css">
 </head>
 <body style="font-family: sans-serif; padding: 40px; text-align: center;">
